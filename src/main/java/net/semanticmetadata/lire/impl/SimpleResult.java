@@ -67,9 +67,10 @@ public class SimpleResult implements Comparable<SimpleResult> {
 
     public int compareTo(SimpleResult o) {
         int compareValue = (int) Math.signum(distance - ((SimpleResult) o).distance);
-        // Bugfix after hint from Kai Jauslin
-//        if (compareValue == 0 && !(document.equals(((SimpleResult) o).document)))
-//            compareValue = document.hashCode() - ((SimpleResult) o).document.hashCode();
+        // Add by ericeiffel
+        // 修复原有多张不同名字但相同内容的图片只被记录一张的BUG，原因TreeSet排序时相同distance的被替换
+        if (compareValue == 0 && !(document.equals(((SimpleResult) o).document)))
+            compareValue = -1;
         return compareValue;
     }
 }

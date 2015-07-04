@@ -143,8 +143,7 @@ public class ImageSearcherFactory {
     }
     
     public static ImageSearcher createBGDATAImageSearcher(int maximumHits) {
-//      return new CEDDImageSearcher(maximumHits);
-      return new GenericFastImageSearcher(maximumHits, CEDD.class, DocumentBuilder.FIELD_NAME_BGDATA);
+        return new GenericFastImageSearcher(maximumHits, BGDATA.class, DocumentBuilder.FIELD_NAME_BGDATA);
     }
 
 

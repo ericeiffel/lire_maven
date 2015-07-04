@@ -13,8 +13,8 @@ import org.apache.lucene.index.IndexWriter;
 class CreateIndex{
 	
 	public static void main(String[] args) throws IOException{
-		String FilePath = "E:\\testpic";
-		String IndexPath = "E:\\index";
+		String FilePath = "F:\\testpic";
+		String IndexPath = "F:\\index";
 		CreateIndex ci = new CreateIndex();
 		ci.CreateCEDDIndex(FilePath, IndexPath);
 		
@@ -23,7 +23,8 @@ class CreateIndex{
     public void CreateCEDDIndex(String FilePath,String IndexPath) throws IOException {
     	
         ArrayList<String> images = FileUtils.getAllImages(new File(FilePath), true);
-        DocumentBuilder builder = DocumentBuilderFactory.getCEDDDocumentBuilder();
+        //DocumentBuilder builder = DocumentBuilderFactory.getCEDDDocumentBuilder();
+        DocumentBuilder builder = DocumentBuilderFactory.getBGDATADocumentBuilder();
         IndexWriter iw = LuceneUtils.createIndexWriter(IndexPath, true);
         for (String identifier : images) {
             Document doc = builder.createDocument(new FileInputStream(identifier), identifier);
